@@ -1,0 +1,111 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Dashboard
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="loading">
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime
+        display-format="DD.MM.YYYY"
+        picker-formar="DD.MM.YYYY"
+        [max]="present_date"
+        (ionChange)="date($event)"
+      ></ion-datetime>
+    </ion-item>
+    <div class="main">
+      <div class="circle-container">
+        <circle-progress
+          [percent]="data.positive_percentage"
+          [radius]="100"
+          [outerStrokeWidth]="16"
+          [innerStrokeWidth]="8"
+          [outerStrokeColor]="colors[1][0]"
+          [innerStrokeColor]="colors[1][1]"
+          [animation]="true"
+          subtitle="positive tweets"
+          subtitleColor="#8EECDF"
+          subtitleFontWeight="300"
+          subtitleFontSize="20"
+          titleColor="#8EECDF"
+          [animationDuration]="500"
+          class="circle"
+        ></circle-progress>
+        <circle-progress
+          [percent]="data.negative_percentage"
+          [radius]="100"
+          [outerStrokeWidth]="16"
+          [innerStrokeWidth]="8"
+          [outerStrokeColor]="colors[0][0]"
+          [innerStrokeColor]="colors[0][1]"
+          [animation]="true"
+          subtitle="Negative tweets"
+          subtitleColor="#E99494"
+          subtitleFontWeight="300"
+          subtitleFontSize="20"
+          titleColor="#E99494"
+          [animationDuration]="500"
+          class="circle"
+        ></circle-progress>
+        <circle-progress
+          [percent]="data.neutral_percentage"
+          [radius]="100"
+          [outerStrokeWidth]="16"
+          [innerStrokeWidth]="8"
+          [outerStrokeColor]="colors[2][0]"
+          [innerStrokeColor]="colors[2][1]"
+          [animation]="true"
+          subtitle="Neutral tweets"
+          subtitleColor="#C39FE6"
+          subtitleFontWeight="300"
+          subtitleFontSize="20"
+          titleColor="#C39FE6"
+          [animationDuration]="500"
+          class="circle"
+        ></circle-progress>
+      </div>
+    </div>
+    <div>
+      <svg
+        class="waves"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28"
+        preserveAspectRatio="none"
+        shape-rendering="auto"
+      >
+        <defs>
+          <path
+            id="gentle-wave"
+            d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+          />
+        </defs>
+        <g class="parallax">
+          <use
+            xlink:href="#gentle-wave"
+            x="48"
+            y="0"
+            fill="rgba(255,255,255,0.7"
+          />
+          <use
+            xlink:href="#gentle-wave"
+            x="48"
+            y="3"
+            fill="rgba(255,255,255,0.5)"
+          />
+          <use
+            xlink:href="#gentle-wave"
+            x="48"
+            y="5"
+            fill="rgba(255,255,255,0.3)"
+          />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+      </svg>
+    </div>
+  </div>
+</ion-content>
